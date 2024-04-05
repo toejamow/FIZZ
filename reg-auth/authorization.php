@@ -24,12 +24,12 @@ include ("../connect/header.php");
 
             <h2>Вход</h2>
 
-            <form class="form-user" id="formAUTHORIZ" action="autorizDB.php" method="post">
+            <form class="form-user" id="formAUTHORIZ" action="authDB.php" method="post">
                 <label for="email">Эл. почта</label>
-                <input class="data-input" id="email" type="email" placeholder="Введите эл. почту">
+                <input class="data-input" id="email" name="email" type="email" placeholder="Введите эл. почту">
 
                 <label for="password">Пароль</label>
-                <input class="data-input" id=" password" type="password" placeholder="Введите пароль">
+                <input class="data-input" id=" password" name="pass" type="password" placeholder="Введите пароль">
 
                 <input id="button-form" type="submit" value="Войти">
             </form>
