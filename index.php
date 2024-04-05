@@ -1,7 +1,7 @@
 <?php
 
-include ("connect.php");
-require ("header.php");
+require ("connect/connect.php");
+require ("connect/header.php");
 
 ?>
 
@@ -12,11 +12,15 @@ require ("header.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Russo+One&display=swap"
+        rel="stylesheet">
+    <title>FIZZ</title>
 </head>
 
 <body>
-    
 
     <main>
         <section>
@@ -26,23 +30,23 @@ require ("header.php");
                 <div class="row">
                     <div class="product">
                         <img src="" alt="Изображение позиции">
-                        <h3>Название</h3>
-                        <h4>Цена</h4>
-                        <button>+</button>
+                        <h3>Коктейльчик</h3>
+                        <h4>150₽</h4>
+                        <button>Добавить <br> в корзину</button>
                     </div>
 
                     <div class="product">
                         <img src="" alt="Изображение позиции">
                         <h3>Название</h3>
                         <h4>Цена</h4>
-                        <button>+</button>
+                        <button>Добавить <br> в корзину</button>
                     </div>
 
                     <div class="product">
                         <img src="" alt="Изображение позиции">
                         <h3>Название</h3>
                         <h4>Цена</h4>
-                        <button>+</button>
+                        <button>Добавить <br> в корзину</button>
                     </div>
                 </div>
 
@@ -51,21 +55,21 @@ require ("header.php");
                         <img src="" alt="Изображение позиции">
                         <h3>Название</h3>
                         <h4>Цена</h4>
-                        <button>+</button>
+                        <button>Добавить <br> в корзину</button>
                     </div>
 
                     <div class="product">
                         <img src="" alt="Изображение позиции">
                         <h3>Название</h3>
                         <h4>Цена</h4>
-                        <button>+</button>
+                        <button>Добавить <br> в корзину</button>
                     </div>
 
                     <div class="product">
                         <img src="" alt="Изображение позиции">
                         <h3>Название</h3>
                         <h4>Цена</h4>
-                        <button>+</button>
+                        <button>Добавить <br> в корзину</button>
                     </div>
                 </div>
 
@@ -73,9 +77,9 @@ require ("header.php");
         </section>
     </main>
 
-    <?php include ("footer.php");?>
+    <?php include ("connect/footer.php"); ?>
 
-    
+
 
 </body>
 
