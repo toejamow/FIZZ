@@ -26,10 +26,10 @@ include ("../connect/header.php");
 
             <form class="form-user" id="formREG" action="regDB.php" method="post">
                 <label for="email">Эл. почта</label>
-                <input class="data-input" id="email" type="email" placeholder="Введите эл. почту">
+                <input class="data-input" id="email" name="email" type="email" placeholder="Введите эл. почту">
 
                 <label for="password">Пароль</label>
-                <input class="data-input" id=" password" type="password" placeholder="Введите пароль">
+                <input class="data-input" id=" password" name="pass" type="password" placeholder="Введите пароль">
 
                 <input id="button-form" type="submit" value="Зарегистрироваться">
             </form>
