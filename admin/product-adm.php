@@ -11,7 +11,7 @@
 <body>
 
     <nav>
-    <a href="index.php">Админ. панель</a>
+        <a href="index.php">Админ. панель</a>
         <a style="display:flex;" id="logo-link" href="../index.php"><img style="align-self:center;" class="logo"
                 src="../images/logo.png" alt="Лого"></a>
         <a href="../reg-auth/exit.php">Выйти</a>
@@ -19,10 +19,13 @@
 
     <main>
         <section>
-<form action="forms/prodADM.php">
-    <label for=""></label>
-    <input type="text">
-</form>
+
+        <h2>Продукты</h2>
+
+            <form action="forms/prodADM.php">
+                <label for=""></label>
+                <input type="text">
+            </form>
         </section>
     </main>
 

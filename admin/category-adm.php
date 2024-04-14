@@ -19,10 +19,13 @@
 
     <main>
         <section>
-<form action="forms/categADM.php">
-    <label for=""></label>
-    <input type="text">
-</form>
+
+        <h2>Категории</h2>
+
+            <form action="forms/categADM.php">
+                <label for=""></label>
+                <input type="text">
+            </form>
         </section>
     </main>
 
