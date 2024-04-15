@@ -22,9 +22,13 @@
 
         <h2>Категории</h2>
 
-            <form action="forms/categADM.php">
-                <label for=""></label>
-                <input type="text">
+        <h3>Категория №ID</h3>
+            <form action="forms/categADM.php" method="POST" enctype="multipart/form-data">
+                <label for="name">Название</label>
+                <input id="name" name="name" type="text">
+
+                <input type="submit" value="Сохранить">
+
             </form>
         </section>
     </main>
