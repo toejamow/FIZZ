@@ -1,6 +1,6 @@
 <?php
 
-include("../connect/connect.php");
+include ("../connect/connect.php");
 
 $categories = mysqli_fetch_assoc(mysqli_query($con, "SELECT * FROM Category"));
 
@@ -28,32 +28,42 @@ print_r($categories);
         <a href="../reg-auth/exit.php">Выйти</a>
     </nav>
 
-    <main>
-        <section>
+    <main class="adm-editm">
 
         <h2>Категории</h2>
 
-        <div class="categories">
-            <h3>Список категорий</h3>
 
-            <div class="category">
-                <h4>Категория № <?=$categories['Category_id']?></h4>
+        <section class="adm-edit">
 
-                <input hidden type="text" value="<?=$categories['Category_id']?>">
-                <input type="text" value="<?=$categories['Name']?>">
+
+            <div class="categories">
+                <h3>Список категорий</h3>
+
+                <div class="cat-prod-ord-cont">
+                    <h4>Категория № <?= $categories['Category_id'] ?></h4>
+
+                    <form action="" method="POST">
+                    <input hidden type="text" value="<?= $categories['Category_id'] ?>">
+                    <input type="text" value="<?= $categories['Name'] ?>">
+                    <input type="submit" value="Сохранить">
+                    </form>
+
+                </div>
 
             </div>
 
-        </div>
+            <div class="create">
 
-        <h3>Создание категории</h3>
-            <form action="forms/categADM.php" method="POST" enctype="multipart/form-data">
-                <label for="name">Название</label>
-                <input id="name" name="name" type="text">
+                <h3>Создание категории</h3>
+                <form action="forms/categADM.php" method="POST" enctype="multipart/form-data">
+                    <label for="name">Название</label>
+                    <input id="name" name="name" type="text">
 
-                <input type="submit" value="Сохранить">
+                    <input type="submit" value="Сохранить">
 
-            </form>
+                </form>
+
+            </div>
         </section>
     </main>
 
