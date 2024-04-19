@@ -1,3 +1,14 @@
+<?php
+
+include("../connect/connect.php");
+
+$categories = mysqli_fetch_assoc(mysqli_query($con, "SELECT * FROM Category"));
+
+
+print_r($categories);
+?>
+
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -22,7 +33,20 @@
 
         <h2>Категории</h2>
 
-        <h3>Категория №ID</h3>
+        <div class="categories">
+            <h3>Список категорий</h3>
+
+            <div class="category">
+                <h4>Категория № <?=$categories['Category_id']?></h4>
+
+                <input hidden type="text" value="<?=$categories['Category_id']?>">
+                <input type="text" value="<?=$categories['Name']?>">
+
+            </div>
+
+        </div>
+
+        <h3>Создание категории</h3>
             <form action="forms/categADM.php" method="POST" enctype="multipart/form-data">
                 <label for="name">Название</label>
                 <input id="name" name="name" type="text">

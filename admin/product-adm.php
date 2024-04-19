@@ -22,9 +22,15 @@
 
         <h2>Продукты</h2>
 
-        
+        <div class="products">
+
         <h3>Продукт №ID</h3>
-            <form action="forms/prodADM.php" method="POST" enctype="multipart/form-data">
+
+        </div>
+
+        <div class="create">
+
+        <form action="forms/prodADM.php" method="POST" enctype="multipart/form-data">
                 <label for="name">Название</label>
                 <input id="name" name="name" type="text">
 
@@ -45,6 +51,12 @@
                 <input type="submit" value="Сохранить">
 
             </form>
+
+        </div>
+
+        
+
+            
 
         </section>
     </main>
