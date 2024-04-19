@@ -17,46 +17,73 @@
         <a href="../reg-auth/exit.php">Выйти</a>
     </nav>
 
-    <main>
-        <section>
+    <main class="adm-editm">
 
         <h2>Продукты</h2>
 
-        <div class="products">
+        <section class="adm-edit">
 
-        <h3>Продукт №ID</h3>
+            <div class="products">
 
-        </div>
+            <h3>Список продуктов</h3>
 
-        <div class="create">
+                <div class="cat-prod-cont">
 
-        <form action="forms/prodADM.php" method="POST" enctype="multipart/form-data">
-                <label for="name">Название</label>
-                <input id="name" name="name" type="text">
+                    <h3>Продукт №ID</h3>
 
-                <label for="descr">Описание</label>
-                <input id="descr" name="descr" type="text">
+                    <form id="product-form" action="" method="POST">
+                        <input hidden type="text" value="id">
 
-                <label for="categ">Категория</label>
-                <select name="categ" id="categ">
-                    <option value="1">1</option>
-                </select>
+                        <label for="name">Название продукта</label>
+                        <input id="name" name="name" type="text">
 
-                <label for="price">Цена</label>
-                <input id="price" name="price" type="text">
+                        <label for="descr">Описание</label>
+                        <input id="descr" name="descr" type="text">
 
-                <label for="image">Изображение</label>
-                <input type="file" id="image" name="image" accept="image/*" >
+                        <label for="price">Цена</label>
+                        <input id="price" name="price" type="text">
 
-                <input type="submit" value="Сохранить">
+                        <label for="image">Изображение</label>
+                        <input type="file" name="image" id="image">
 
-            </form>
+                        <input type="submit" value="Сохранить">
+                    </form>
 
-        </div>
+                </div>
 
-        
+            </div>
 
-            
+            <div class="create">
+
+            <h3>Создание продукта</h3>
+
+                <form action="forms/prodADM.php" method="POST" enctype="multipart/form-data">
+                    <label for="name">Название</label>
+                    <input id="name" name="name" type="text">
+
+                    <label for="descr">Описание</label>
+                    <input id="descr" name="descr" type="text">
+
+                    <label for="categ">Категория</label>
+                    <select name="categ" id="categ">
+                        <option value="1">1</option>
+                    </select>
+
+                    <label for="price">Цена</label>
+                    <input id="price" name="price" type="text">
+
+                    <label for="image">Изображение</label>
+                    <input type="file" id="image" name="image" accept="image/*">
+
+                    <input type="submit" value="Сохранить">
+
+                </form>
+
+            </div>
+
+
+
+
 
         </section>
     </main>
