@@ -23,8 +23,13 @@
         <h2>Заказы</h2>
 
             <form action="forms/ordADM.php">
-                <label for=""></label>
-                <input type="text">
+                <label for="status">Статус заказа</label>
+                <select name="status" id="status">
+                    <option value="cooking">Готовим</option> 
+                    <option value="delivering">Доставка</option> 
+                    <option value="finished">Выполнено</option> 
+                </select>
+
             </form>
         </section>
     </main>
