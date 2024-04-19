@@ -17,12 +17,24 @@
         <a href="../reg-auth/exit.php">Выйти</a>
     </nav>
 
-    <main>
-        <section>
+    <main class="adm-editm">
+        <section class="adm-edit">
+
+        <div class="orders">
 
         <h2>Заказы</h2>
 
-            <form action="forms/ordADM.php">
+        <div class="cat-prod-ord-cont">
+
+        <h3>Заказ №ID</h3>
+
+            <form id="ord-form" action="forms/ordADM.php">
+
+            <label for="user-id">ID клиента</label>
+            <input id="user-id" readonly type="text" value=""user-id>
+
+            <input id="date" type="text" value="date">
+
                 <label for="status">Статус заказа</label>
                 <select name="status" id="status">
                     <option value="cooking">Готовим</option> 
@@ -30,7 +42,18 @@
                     <option value="finished">Выполнено</option> 
                 </select>
 
+                <label for="bonus-u">Использованные баллы</label>
+                <input type="text">
+
+                <label for="bonus-a">Полученные баллы</label>
+                <input type="text">
+
             </form>
+
+            </div>
+
+            </div>
+
         </section>
     </main>
 
