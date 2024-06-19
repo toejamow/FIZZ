@@ -1,3 +1,16 @@
+<?php
+
+include "..\connect\connect.php";
+
+$prods = mysqli_fetch_all(mysqli_query($con, "SELECT * FROM `Product`"));
+
+$categoryResult = mysqli_fetch_all(mysqli_query($con, "SELECT * FROM Category"));
+
+print_r($prods);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -25,39 +38,52 @@
 
             <div class="products">
 
-            <h3>Список продуктов</h3>
+                <h3>Список продуктов</h3>
 
-                <div class="cat-prod-cont">
+                <?php foreach ($prods as $prod) { ?>
 
-                    <h3>Продукт №ID</h3>
 
-                    <form id="product-form" action="" method="POST">
-                        <input hidden type="text" value="id">
+                    <div class="cat-prod-cont">
 
-                        <label for="name">Название продукта</label>
-                        <input id="name" name="name" type="text">
+                        <h3>Продукт <?= $prod[0] ?></h3>
 
-                        <label for="descr">Описание</label>
-                        <input id="descr" name="descr" type="text">
+                        <form id="product-form" action="update-prod.php" method="POST">
+                            <input hidden name="id" type="text" value="<?= $prod[0] ?>">
 
-                        <label for="price">Цена</label>
-                        <input id="price" name="price" type="text">
+                            <label for="name">Название продукта</label>
+                            <input id="name" name="name" type="text" value="<?= $prod[1] ?>">
 
-                        <label for="image">Изображение</label>
-                        <input type="file" name="image" id="image">
+                            <label for="descr">Описание</label>
+                            <input id="descr" name="descr" type="text" value="<?= $prod[2] ?>">
 
-                        <input type="submit" value="Сохранить">
-                    </form>
+                            <label for="categ">Категория</label>
+                            <select name="categ" id="categ">
+                                <?php foreach ($categoryResult as $categoryItem): ?>
+                                    <option value="<?= $categoryItem[0] ?>" <?= $categoryItem[0] == $prod[3] ? 'selected' : '' ?>>
+                                        <?= $categoryItem[1] ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
 
-                </div>
+                            <label for="price">Цена</label>
+                            <input id="price" name="price" type="text" value="<?= $prod[4] ?>">
+
+                            <input type="submit" value="Сохранить">
+                        </form>
+
+                        <a href="delete-prod.php?id=<?=$prod[0]?>">Удалить</a>
+
+                    </div>
+
+                <?php } ?>
 
             </div>
 
             <div class="create">
 
-            <h3>Создание продукта</h3>
+                <h3>Создание продукта</h3>
 
-                <form action="forms/prodADM.php" method="POST" enctype="multipart/form-data">
+                <form action="prodADM.php" method="POST" enctype="multipart/form-data">
                     <label for="name">Название</label>
                     <input id="name" name="name" type="text">
 
@@ -66,11 +92,17 @@
 
                     <label for="categ">Категория</label>
                     <select name="categ" id="categ">
-                        <option value="1">1</option>
+                        <?php
+
+                        foreach ($categoryResult as $categoryItem): ?>
+                            <option value="<?= $categoryItem[0] ?>"> <?= $categoryItem[1] ?></option>
+                        <?php endforeach; ?>
+
+                        ?>
                     </select>
 
                     <label for="price">Цена</label>
-                    <input id="price" name="price" type="text">
+                    <input id="price" name="price" type="number">
 
                     <label for="image">Изображение</label>
                     <input type="file" id="image" name="image" accept="image/*">

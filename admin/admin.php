@@ -1,25 +1,8 @@
 <?php
 include ("header.php");
+include "../connect/header.php";
 ?>
 
-<!DOCTYPE html>
-<html lang="ru">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Админ. панель</title>
-</head>
-
-<body>
-
-<nav>
-        <a href="product-adm.php">Зарегистрироваться</a>
-        <a id="logo-link" href="index.php"><img class="logo" src="images/logo.png" alt="Лого"></a>
-        <a href="exit.php">Выйти</a>
-        <a href="exit.php">Выйти</a>
-    </nav>
 
 <main>
     <section>

@@ -2,10 +2,27 @@
 
 include ("../connect/connect.php");
 
-$categories = mysqli_fetch_assoc(mysqli_query($con, "SELECT * FROM Category"));
+$categories = mysqli_fetch_all(mysqli_query($con, "SELECT 
+    Category.category_id, 
+    Category.name, 
+    COUNT(Product.id_product) AS count
+FROM 
+    category
+LEFT JOIN 
+    Product
+ON 
+    Category.category_id = Product.category_id
+GROUP BY 
+    Category.category_id, 
+    Category.name
+"));
 
+foreach ($categories as $categ) {
+    print_r($categ);
+}
 
-print_r($categories);
+// print_r($categories);
+
 ?>
 
 
@@ -39,23 +56,51 @@ print_r($categories);
             <div class="categories">
                 <h3>Список категорий</h3>
 
-                <div class="cat-prod-ord-cont">
-                    <h4>Категория № <?= $categories['Category_id'] ?></h4>
+                <?php foreach ($categories as $categ): ?>
 
-                    <form action="" method="POST">
-                    <input hidden type="text" value="<?= $categories['Category_id'] ?>">
-                    <input type="text" value="<?= $categories['Name'] ?>">
-                    <input type="submit" value="Сохранить">
-                    </form>
+                    <div class="cat-prod-ord-cont">
+                        <h4>Категория № <?= $categ[0]?> | Товаров: <?=$categ[2]?></h4>
 
-                </div>
+                        <form action="update-categ.php" method="POST">
+                            <input name="id" hidden type="text" value="<?= $categ[0] ?>">
+                            <input name="name" type="text" value="<?= $categ[1] ?>">
+
+
+
+                            <input type="submit" value="Сохранить">
+                        </form>
+
+                        <div class="categ-prod-cont">
+
+                        <div class="categ-prod">
+                        <?php
+                $categoryTovar = "SELECT Product.* FROM Product INNER JOIN Category ON Category.Category_id = Product.Category_id WHERE Category.Category_id = $categ[0]";
+                $categoryResult = mysqli_fetch_all(mysqli_query($con, $categoryTovar));
+
+                foreach ($categoryResult as $product) {
+                    echo $product[0]. " - ". $product[1]. "<br>";
+                }
+
+                ?>
+                        </div>
+
+                        </div>
+
+                        <a href="delete-categ.php?id=<?= $categ[0] ?>">Удалить</a>
+
+                    </div>
+
+                <?php endforeach; ?>
+
+
+            </div>
 
             </div>
 
             <div class="create">
 
                 <h3>Создание категории</h3>
-                <form action="forms/categADM.php" method="POST" enctype="multipart/form-data">
+                <form action="categADM.php" method="POST">
                     <label for="name">Название</label>
                     <input id="name" name="name" type="text">
 

@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="ru">
+<?php 
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <title>Заказы</title>
-</head>
+require_once "../connect/header.php";
+require_once "../connect/connect.php";
 
-<body>
+$orders = mysqli_fetch_all(mysqli_query($con, "SELECT * From Orders"));
 
-    <nav>
-        <a href="index.php">Админ. панель</a>
-        <a style="display:flex;" id="logo-link" href="../index.php"><img style="align-self:center;" class="logo"
-                src="../images/logo.png" alt="Лого"></a>
-        <a href="../reg-auth/exit.php">Выйти</a>
-    </nav>
+?>
 
     <main class="adm-editm">
         <section class="adm-edit">
@@ -24,33 +14,46 @@
 
         <h2>Заказы</h2>
 
-        <div class="cat-prod-ord-cont">
+        
+        <?php
 
-        <h3>Заказ №ID</h3>
+foreach ($orders as $order) { ?>
+<div class="cat-prod-ord-cont">
 
-            <form id="ord-form" action="forms/ordADM.php">
+<h3>Заказ <?=$order[0]?></h3>
 
-            <label for="user-id">ID клиента</label>
-            <input id="user-id" readonly type="text" value=""user-id>
+<form id="ord-form" method="post" action="ordADM.php">
 
-            <input id="date" type="text" value="date">
+<input type="hidden" name="id" value="<?=$order[0]?>">
 
-                <label for="status">Статус заказа</label>
-                <select name="status" id="status">
-                    <option value="cooking">Готовим</option> 
-                    <option value="delivering">Доставка</option> 
-                    <option value="finished">Выполнено</option> 
-                </select>
+<label for="user-id">ID клиента</label>
+<input id="user-id" name="id_u" readonly type="text" value="<?=$order[1]?>">
 
-                <label for="bonus-u">Использованные баллы</label>
-                <input type="text">
+<label for="date">Дата</label>
+<input id="date" type="text" value="<?=$order[2]?>">
 
-                <label for="bonus-a">Полученные баллы</label>
-                <input type="text">
+    <label for="status">Статус заказа</label>
+    <select id="status" name="status">
+  <option value="Готовим" <?php if ($order[3] === "Готовим") echo "selected"; ?> name = "status">Готовим</option>
+  <option value="Доставка" <?php if ($order[3] === "Доставка") echo "selected"; ?> name = "status">Доставка</option>
+  <option value="Выполнено" <?php if ($order[3] === "Выполнено") echo "selected"; ?> name = "status">Выполнено</option>
+</select>
 
-            </form>
+    <label for="bonus-u">Использованные баллы</label>
+    <input type="text" value="<?=$order[5]?>">
 
-            </div>
+    <label for="bonus-a">Полученные баллы</label>
+    <input type="text" value="<?=$order[6]?>">
+
+<input type="submit" value="Отправить">
+
+</form>
+
+</div>
+        <?php } ?>
+
+        
+
 
             </div>
 
